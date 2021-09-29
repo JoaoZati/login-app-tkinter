@@ -1,5 +1,7 @@
 import tkinter as tk
 from start_page import StartPage
+from singup_page import SingupPage
+from success_page import SuccessPage
 
 
 class LoginApp(tk.Tk):
@@ -16,16 +18,17 @@ class LoginApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for f in (StartPage,):
+        for f in (StartPage, SingupPage, SuccessPage):
             frame = f(container, self)
             self.frames[f] = frame
             frame.grid(row=0, column=0, sticky="nsew")
-            
-        self.show_frame(StartPage)
-    
+
+        self.show_frame(SuccessPage)
+
     def show_frame(self, frame):
         frame = self.frames[frame]
         frame.tkraise()
+
 
 if __name__ == '__main__':
     login_app = LoginApp()
