@@ -15,16 +15,17 @@ class LoginApp(tk.Tk):
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
-        self.frame_start_page = StartPage(container, self)
-        self.frame_start_page.grid(row=0, column=0, sticky='nsew')
-
-        self.frame_2 = StartPage(container, self)
-        self.frame_2.config(bg='#212529')
-        self.frame_2.grid(row=0, column=0, sticky='nsew')
-
-        self.frame_2.tkraise()
-        self.frame_start_page.tkraise()
-
+        self.frames = {}
+        for f in (StartPage,):
+            frame = f(container, self)
+            self.frames[f] = frame
+            frame.grid(row=0, column=0, sticky="nsew")
+            
+        self.show_frame(StartPage)
+    
+    def show_frame(self, frame):
+        frame = self.frames[frame]
+        frame.tkraise()
 
 if __name__ == '__main__':
     login_app = LoginApp()
