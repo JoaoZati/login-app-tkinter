@@ -42,6 +42,11 @@ class StartPage(tk.Frame):
                                   width=20, justify='center')
         entry_password.grid(row=0, column=1)
 
+        self.text_menssage = ''
+        label_menssage = tk.Label(list_frames[2], text=self.text_menssage, bg=self.bg_frames, fg='White',
+                                  font=('Arial', 20))
+        label_menssage.grid(row=0, column=0)
+
         self.button_login = tk.Button(list_frames[3], text='Login', bg='#495057', highlightthickness=0,
                                       width=20)
         self.button_login.grid(row=0, column=0)

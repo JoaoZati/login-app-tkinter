@@ -23,7 +23,7 @@ class LoginApp(tk.Tk):
             self.frames[f] = frame
             frame.grid(row=0, column=0, sticky="nsew")
 
-        self.show_frame(SuccessPage)
+        self.show_frame(SingupPage)
 
     def show_frame(self, frame):
         frame = self.frames[frame]

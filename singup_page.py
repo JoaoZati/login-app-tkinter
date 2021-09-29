@@ -15,7 +15,7 @@ class SingupPage(tk.Frame):
                                 fg='Yellow', font=('Arial', 24))
         label_my_app.pack(expand=True, fill='both')
 
-        list_frames = [tk.Frame(self, bg=self.bg_frames) for _ in range(4)]
+        list_frames = [tk.Frame(self, bg=self.bg_frames) for _ in range(5)]
 
         for indice, frame in enumerate(list_frames):
             frame.pack(expand=True, fill='both')
@@ -51,6 +51,11 @@ class SingupPage(tk.Frame):
                                           width=20, justify='center')
         entry_confirm_password.grid(row=0, column=1)
 
-        self.button_singup = tk.Button(list_frames[3], text='Sing up', bg='#495057', highlightthickness=0,
+        self.text_menssage = ''
+        label_menssage = tk.Label(list_frames[3], text=self.text_menssage, bg=self.bg_frames, fg='White',
+                                  font=('Arial', 20))
+        label_menssage.grid(row=0, column=0)
+
+        self.button_singup = tk.Button(list_frames[4], text='Sing up', bg='#495057', highlightthickness=0,
                                        width=20)
         self.button_singup.grid(row=0, column=0)
