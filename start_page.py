@@ -46,7 +46,7 @@ class StartPage(tk.Frame):
 
         self.text_password = tk.StringVar()
         self.entry_password = tk.Entry(list_frames[1], textvariable=self.text_password,
-                                       width=20, justify='center')
+                                       width=20, justify='center', show="*")
         self.entry_password.grid(row=0, column=1)
 
         self.text_menssage = ''
