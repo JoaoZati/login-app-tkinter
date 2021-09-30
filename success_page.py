@@ -1,4 +1,6 @@
 import tkinter as tk
+import start_page
+import login_app
 
 
 class SuccessPage(tk.Frame):
@@ -8,6 +10,8 @@ class SuccessPage(tk.Frame):
         self.bg = '#212529'
         self.bg_frames = '#6c757d'
         self.config(bg=self.bg)
+
+        self.controller = controller
 
         frame_app = tk.Frame(self, bg=self.bg, height=125)
         frame_app.pack(expand=True, fill='both')

@@ -25,9 +25,17 @@ class LoginApp(tk.Tk):
 
         self.show_frame(StartPage)
 
+        self.frames[SuccessPage].button_logout.config(command=self.logout)
+
     def show_frame(self, frame):
         frame = self.frames[frame]
         frame.tkraise()
+
+    def logout(self):
+        start_page = self.frames[StartPage]
+        start_page.entry_password.delete(0, tk.END)
+        start_page.entry_username.delete(0, tk.END)
+        self.show_frame(StartPage)
 
 
 if __name__ == '__main__':
