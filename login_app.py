@@ -2,6 +2,9 @@ import tkinter as tk
 from start_page import StartPage
 from singup_page import SingupPage
 from success_page import SuccessPage
+from backend import Database
+
+database = Database('users.db')
 
 
 class LoginApp(tk.Tk):
@@ -26,6 +29,7 @@ class LoginApp(tk.Tk):
         self.show_frame(StartPage)
 
         self.frames[SuccessPage].button_logout.config(command=self.logout)
+        self.frames[SingupPage].button_singup.config(command=self.singup)
 
     def show_frame(self, frame):
         frame = self.frames[frame]
@@ -35,6 +39,25 @@ class LoginApp(tk.Tk):
         start_page = self.frames[StartPage]
         start_page.entry_password.delete(0, tk.END)
         start_page.entry_username.delete(0, tk.END)
+        self.frames[StartPage].label_menssage.config(text='')
+        self.show_frame(StartPage)
+
+    def singup(self):
+        username = self.frames[SingupPage].entry_username.get()
+        password = self.frames[SingupPage].entry_password.get()
+        confirm_password = self.frames[SingupPage].entry_confirm_password.get()
+
+        if password != confirm_password:
+            self.frames[SingupPage].label_menssage.config(text='Passwords not the same')
+            return
+
+        try:
+            database.insert_data(username, password)
+        except:
+            self.frames[SingupPage].label_menssage.config(text='User already exists')
+            return
+
+        self.frames[StartPage].label_menssage.config(text='User successful\nCadastred')
         self.show_frame(StartPage)
 
 

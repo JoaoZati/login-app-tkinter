@@ -41,5 +41,5 @@ if __name__ == '__main__':
     # users.insert_data('molina', '456')
     # users.delete_data(3)
     print(users.select_data())
-    print(bool(users.search_data('joaozati', '123')))
+    # print(bool(users.search_data('joaozati', '123')))
     
