@@ -31,6 +31,9 @@ class Database:
         self.conection.commit()
         return rows
 
+    def __del__(self):
+        self.conection.close()
+
 
 if __name__ == '__main__':
     users = Database('users.db')
