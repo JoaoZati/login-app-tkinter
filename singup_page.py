@@ -20,7 +20,7 @@ class SingupPage(tk.Frame):
                                 fg='Yellow', font=('Arial', 24))
         label_my_app.pack(expand=True, fill='both')
 
-        list_frames = [tk.Frame(self, bg=self.bg_frames) for _ in range(5)]
+        list_frames = [tk.Frame(self, bg=self.bg_frames) for _ in range(6)]
 
         for indice, frame in enumerate(list_frames):
             frame.pack(expand=True, fill='both')
@@ -64,3 +64,7 @@ class SingupPage(tk.Frame):
         self.button_singup = tk.Button(list_frames[4], text='Sing up', bg='#495057', highlightthickness=0,
                                        width=20)
         self.button_singup.grid(row=0, column=0)
+
+        self.button_back = tk.Button(list_frames[5], text='Back to Loggin', bg='#495057', highlightthickness=0,
+                                     width=20)
+        self.button_back.grid(row=0, column=0)

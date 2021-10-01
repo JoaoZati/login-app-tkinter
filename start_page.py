@@ -66,6 +66,14 @@ class StartPage(tk.Frame):
         username = self.entry_username.get()
         password = self.entry_password.get()
 
+        if username == '':
+            self.label_menssage.config(text='Username field is empty')
+            return
+
+        if password == '':
+            self.label_menssage.config(text='Password field is empty')
+            return
+
         bool_login = database.search_data(username, password)
         if bool_login:
             self.controller.show_frame(SuccessPage)

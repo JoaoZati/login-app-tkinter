@@ -30,15 +30,15 @@ class LoginApp(tk.Tk):
 
         self.frames[SuccessPage].button_logout.config(command=self.logout)
         self.frames[SingupPage].button_singup.config(command=self.singup)
+        self.frames[SingupPage].button_back.config(command=self.back_to_login)
 
     def show_frame(self, frame):
         frame = self.frames[frame]
         frame.tkraise()
 
     def logout(self):
-        start_page = self.frames[StartPage]
-        start_page.entry_password.delete(0, tk.END)
-        start_page.entry_username.delete(0, tk.END)
+        self.frames[StartPage].entry_password.delete(0, tk.END)
+        self.frames[StartPage].entry_username.delete(0, tk.END)
         self.frames[StartPage].label_menssage.config(text='')
         self.show_frame(StartPage)
 
@@ -47,6 +47,17 @@ class LoginApp(tk.Tk):
         password = self.frames[SingupPage].entry_password.get()
         confirm_password = self.frames[SingupPage].entry_confirm_password.get()
 
+        dict_verify = {
+            username: 'Username field is empty',
+            password: 'Password field is empty',
+            confirm_password: 'Confirm Password field\nis empty',
+            }
+
+        for key, value in dict_verify.items():
+            if key == '':
+                self.frames[SingupPage].label_menssage.config(text=value)
+                return
+
         if password != confirm_password:
             self.frames[SingupPage].label_menssage.config(text='Passwords not the same')
             return
@@ -54,10 +65,23 @@ class LoginApp(tk.Tk):
         try:
             database.insert_data(username, password)
         except:
-            self.frames[SingupPage].label_menssage.config(text='User already exists')
+            self.frames[SingupPage].label_menssage.config(text='Username already exists')
             return
 
+        self.frames[SingupPage].entry_username.delete(0, tk.END)
+        self.frames[SingupPage].entry_password.delete(0, tk.END)
+        self.frames[SingupPage].entry_confirm_password.delete(0, tk.END)
+        self.frames[SingupPage].label_menssage.config(text='')
+
         self.frames[StartPage].label_menssage.config(text='User successful\nCadastred')
+        self.show_frame(StartPage)
+
+    def back_to_login(self):
+        self.frames[SingupPage].entry_username.delete(0, tk.END)
+        self.frames[SingupPage].entry_password.delete(0, tk.END)
+        self.frames[SingupPage].entry_confirm_password.delete(0, tk.END)
+        self.frames[SingupPage].label_menssage.config(text='')
+        self.frames[StartPage].label_menssage.config(text='')
         self.show_frame(StartPage)
 
 

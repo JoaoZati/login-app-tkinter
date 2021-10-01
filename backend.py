@@ -37,9 +37,9 @@ class Database:
 
 if __name__ == '__main__':
     users = Database('users.db')
-    # users.insert_data('joaozati', '123')
+    # users.insert_data('', '')
     # users.insert_data('molina', '456')
-    # users.delete_data(3)
+    users.delete_data(9)
     print(users.select_data())
     # print(bool(users.search_data('joaozati', '123')))
     
